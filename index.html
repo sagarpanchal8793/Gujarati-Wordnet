@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<title align="center">Gujarati WordNet</title>
+<link rel="stylesheet" type="text/css" href="css/proj.css">
+  <head>
+            <meta charset="utf-8">
+			 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="description" content="Gujarati WordNet">
+        <meta name="author" content="">
+        
+        <!-- viewport settings -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+	<script type="text/javascript" src="https://www.google.com/jsapi">
+    </script>
+    <script type="text/javascript">
+
+      // Load the Google Transliterate API
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
+
+      function onLoad() {
+        var options = {
+            sourceLanguage:
+                google.elements.transliteration.LanguageCode.ENGLISH,
+            destinationLanguage:
+                [google.elements.transliteration.LanguageCode.GUJARATI],
+            shortcutKey: 'ctrl+g',
+            transliterationEnabled: true
+        };
+
+        // Create an instance on TransliterationControl with the required
+        // options.
+        var control =
+            new google.elements.transliteration.TransliterationControl(options);
+
+        // Enable transliteration in the textbox with id
+        // 'transliterateTextarea'.
+        control.makeTransliteratable(['transliterateTextarea']);
+      }
+      google.setOnLoadCallback(onLoad);
+	  
+	  function validateForm() {
+		var x = document.forms["myForm"]["word"].value;
+		if (x == null || x == "") {
+        alert("Please Enter a Word to search");
+        return false;
+		}
+		}	
+
+
+			/*function showResult(str) {
+            if (str.length==0) { 
+            document.getElementById("livesearch").innerHTML="";
+             document.getElementById("livesearch").style.border="0px";
+            return;
+            }
+            if (window.XMLHttpRequest) {
+              // code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();
+            } else {  // code for IE6, IE5
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function() {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
+            document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+            }
+          }
+            xmlhttp.open("GET","word.php?q="+str,true);
+            xmlhttp.send();
+          }*/	
+    </script>
+	
+  </head>
+  
+ <body>
+  
+  <header>
+  
+	
+		<h4 style="margin:38%" id="inline" class="title"> Gujarati WordNet </h4>
+	
+		<br><br><br>
+
+
+  </header>
+  
+  <section>
+	<div>
+		<table border='10px' class="main" align='center' cellpadding='15px'>
+
+			<tr><td>
+			<h2 class="name" align="center">Gujarati WordNet<br><br>ગુજરાતી શબ્દજાળું </h2>
+			<form name="myForm" method='post' action='word.php' id='form-control' autocomplete="off"></td></tr>
+
+			<tr><td>
+			<p>Search For Gujarati Word (ગુજરાતી શબ્દો શોધો)</p>
+			<input class='size' type="text" name="word" id="transliterateTextarea" onkeyup="showResult(this.value)" placeholder="Enter the word in English" required>
+			
+			
+			
+			<tr><td><center>
+					<button class='btn' type='submit'>Search &nbsp;(શોધ)</button>
+					</center></tr></td>
+				
+		</table>
+	</div>
+	
+</section>
+<br><br>
+
+<div id="livesearch"></div></td></tr>
+
+<footer class="foot">
+
+	<div id="inline">
+	
+		<p id="inline" class="logo">By:<br>Sagar S Panchal (1221003) <br>
+		Parth P Shukla (1221004)<br>
+		Piyush R Panchal (1221005)<br>
+		Jayesh S Kolte (1221024)
+		</p>
+		<br>
+		<p id="inline">
+		B.E Computer<br>
+		Final Year Project<br>
+		<br>Mentor : H.O.D (Mrs. &nbsp;Bharathi.H.Narayan)
+		</p>
+	
+	</div>
+</footer>
+
+</body>
+</html>

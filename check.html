@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>test Radio buttons checkbox</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input:checkbox[name=Colors]').keypress(function(event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == 7) {
+                    Checkbox_to_RadioButton(this,"ctrlKey+g");
+                }   
+                event.stopPropagation();
+            });
+
+            $('input:checkbox[name=Colors]').click(function(){
+                Checkbox_to_RadioButton(this,"click");
+            });
+        });
+
+        function Checkbox_to_RadioButton(box,myEvent){
+            if(myEvent == "ctrlKey+g")
+            {
+                var $box = $(box);
+                if($box.attr('checked'))
+                    $box.attr('checked',false);
+                else
+                    $box.attr('checked',true);
+            }
+            $('input:checkbox[name=' + box.name + ']').each(function(){
+                if (this != box)
+                    $(this).attr('checked', false);
+            });
+        }
+		
+		$(document).on('keypress', chkStudent, 'ctrl+g', function());
+		
+		function doc_keyUp(e) {
+
+    // this would test for whichever key is 40 and the ctrl key at the same time
+    if (e.ctrlKey && e.keyCode == 71) {
+        // call your function to do the thing
+        alert('hbd');
+    }
+}
+// register the handler 
+document.addEventListener('keyup', doc_keyUp, false);
+    </script>
+</head>
+
+<body>
+    <h1>test Radio buttons checkbox</h1>
+    form name="form1">
+        <input type="text" id="dname" name="dname"><br>
+        <input type="checkbox" id="Colors" name="Colors" value="Red" />Red<br />
+        <!--input type="checkbox"  id="Colors" name="Colors" value="Blue" />Blue<br />
+        <input type="checkbox" id="Colors"  name="Colors" value="Green" />Green<br     />
+        <input type="checkbox" id="Colors"  name="Colors" value="Yellow"        />Yellow<br /> 
+		<input type="checkbox" id="chkStudent" data-bind="checked: isStudent" accesskey=""/-->
+        <br>
+    </form>
+  </body>
+</html>
